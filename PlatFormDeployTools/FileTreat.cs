@@ -65,9 +65,9 @@ namespace PlatFormDeployTools
             masterScheduler.serverIP = serverIP;
             masterScheduler.serverPort = serverPort;
             masterScheduler.telnetPort = telnetPort;
-            masterScheduler.SID = SID;
-            masterScheduler.usr = usr;
-            masterScheduler.pwd = pwd;
+            masterScheduler.ProSID = SID;
+            masterScheduler.Prousr = usr;
+            masterScheduler.Propwd = pwd;
             ProjectContainer.masterScheduler = masterScheduler;
         }
         /// <summary>

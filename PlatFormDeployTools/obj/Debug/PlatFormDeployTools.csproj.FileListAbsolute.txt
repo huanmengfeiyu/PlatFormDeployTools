@@ -1,0 +1,15 @@
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployTools.exe.config
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.csprojResolveAssemblyReference.cache
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.MainForm.resources
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.Properties.Resources.resources
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.csproj.GenerateResource.Cache
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployTools.exe
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployTools.pdb
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployModel.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployUtility.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\log4net.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployModel.pdb
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployUtility.pdb
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\log4net.xml
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.exe
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.pdb

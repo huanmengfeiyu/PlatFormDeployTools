@@ -22,23 +22,23 @@ namespace PlatFormDeployModel
         /// <summary>
         /// dc数据库IP
         /// </summary>
-        public string Address { get; set; }
+        public string DcIP { get; set; }
         /// <summary>
         /// dc 数据库端口
         /// </summary>
-        public string Port { get; set; }
+        public string DcPort { get; set; }
         /// <summary>
         /// dc 数据库SID
         /// </summary>
-        public string Table { get; set; }
+        public string DcSID { get; set; }
         /// <summary>
         /// dc 数据库用户名
         /// </summary>
-        public string usr { get; set; }
+        public string DcUsr { get; set; }
         /// <summary>
         /// dc数据库密码
         /// </summary>
-        public string Password { get; set; }
+        public string DcPwd { get; set; }
         /// <summary>
         /// 节点ID
         /// </summary>

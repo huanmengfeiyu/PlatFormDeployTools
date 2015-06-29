@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<ConfigInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OraConnectString>Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.11)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=tdr01)));User Id=ehs;Password=ehs123;</OraConnectString>
+  <AppPort>10005</AppPort>
+  <WebPort>10004</WebPort>
+  <DCIP>122.228.188.210</DCIP>
+  <DCPort>10003</DCPort>
+  <DC_AppId>342</DC_AppId>
+  <DC_AppKey>9698516ENN69DXCM31TI5GH8TNTRCX1G</DC_AppKey>
+  <DC_UserId>15</DC_UserId>
+  <DC_UserToken>jpOwYHCvADPQvlX3VeD9r68St8o=</DC_UserToken>
+  <LogDir></LogDir>
+  <ClientVer>1.0</ClientVer>
+</ConfigInfo>
+
+

@@ -20,17 +20,19 @@ namespace PlatFormDeployModel
         /// Telnet端口
         /// </summary>
         public string telnetPort { get; set; }
+        public string ProIP { get; set; }
+        public string ProPort { get; set; }
         /// <summary>
         /// Pro数据库链接
         /// </summary>
-        public string SID { get; set; }
+        public string ProSID { get; set; }
         /// <summary>
         /// Pro数据库用户名
         /// </summary>
-        public string usr { get; set; }
+        public string Prousr { get; set; }
         /// <summary>
         /// Pro数据库密码
         /// </summary>
-        public string pwd { get; set; }
+        public string Propwd { get; set; }
     }
 }

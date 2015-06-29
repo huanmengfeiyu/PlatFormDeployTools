@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlatFormDeployTools</RootNamespace>
     <AssemblyName>PlatFormDeployTools</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -77,6 +80,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="平台部署成品——标准文件结构\API\10001\Tendency.ApiDataCenter.exe.config" />
+    <None Include="平台部署成品——标准文件结构\HttpAPI\1\config.ini" />
+    <None Include="平台部署成品——标准文件结构\主调度\1\config.ini" />
+    <None Include="平台部署成品——标准文件结构\前置机\12001\config.ini" />
+    <None Include="平台部署成品——标准文件结构\子调度\15001\config.ini" />
+    <None Include="平台部署成品——标准文件结构\应用调度\16001\config.ini" />
+    <None Include="平台部署成品——标准文件结构\权限中心\13001\config.ini" />
+    <None Include="平台部署成品——标准文件结构\监控中心\1\config.ini" />
+    <None Include="平台部署成品——标准文件结构\认证中心\14001\Config.ini" />
+    <None Include="平台部署成品——标准文件结构\设备调度\17001\config.ini" />
+    <None Include="平台部署成品——标准文件结构\设备调度\17001\重启.bat" />
+    <None Include="平台部署成品——标准文件结构\采集器\11001\Tendency.DataCollector.exe.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -90,6 +105,87 @@
       <Project>{e3439078-7d20-46be-898b-cdd0224968d1}</Project>
       <Name>PlatFormDeployUtility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="平台部署成品——标准文件结构\API\10001\config.xml" />
+    <Content Include="平台部署成品——标准文件结构\API\10001\log4net.dll" />
+    <Content Include="平台部署成品——标准文件结构\API\10001\Tendency.ApiDataCenter.exe" />
+    <Content Include="平台部署成品——标准文件结构\API\10001\Tendency.SocketLib.dll" />
+    <Content Include="平台部署成品——标准文件结构\API\10001\Tendency.Utilities.dll" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\IocpModeSvr.dll" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\mfc100.dll" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\NetSvrLog.txt" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\HttpAPI\1\TendencyHttpSvr.exe" />
+    <Content Include="平台部署成品——标准文件结构\主调度\1\MainDispatch.exe" />
+    <Content Include="平台部署成品——标准文件结构\主调度\1\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\主调度\1\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\主调度\1\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\前置机\12001\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\前置机\12001\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\前置机\12001\TdrFrontServer.exe" />
+    <Content Include="平台部署成品——标准文件结构\子调度\15001\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\子调度\15001\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\子调度\15001\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\子调度\15001\SubDispatch.exe" />
+    <Content Include="平台部署成品——标准文件结构\应用调度\16001\APPDispatch.exe" />
+    <Content Include="平台部署成品——标准文件结构\应用调度\16001\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\应用调度\16001\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\应用调度\16001\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\权限中心\13001\Authority.exe" />
+    <Content Include="平台部署成品——标准文件结构\权限中心\13001\mfc100.dll" />
+    <Content Include="平台部署成品——标准文件结构\权限中心\13001\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\权限中心\13001\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\权限中心\13001\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\权限中心\13001\oraocci11d.dll" />
+    <Content Include="平台部署成品——标准文件结构\监控中心\1\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\监控中心\1\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\监控中心\1\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\监控中心\1\TdrMonitor.exe" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\AuthenticationCenter.exe" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\ExportProtocol.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\IocpModeSvr.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\mfc100.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msjava.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msvcm90.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msvcp90.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msvcr80.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\msvcr90.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\NetClient.dll" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\NetClientLog.txt" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\NetSvrLog.txt" />
+    <Content Include="平台部署成品——标准文件结构\认证中心\14001\oraocci11.dll" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\CHINA_MOBILE.txt" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\CHINA_TELECOM.txt" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\CHINA_UNICOM.txt" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\delay1.vbs" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\delay2.vbs" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\DevDispatch.exe" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\DevDispatch1.exe" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\DevDispatch2.exe" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\DevDispatch3.exe" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\msvcp100.dll" />
+    <Content Include="平台部署成品——标准文件结构\设备调度\17001\msvcr100.dll" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\log4net.dll" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\Newtonsoft.Json.dll" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\Tendency.Core.dll" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\Tendency.Data.dll" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\Tendency.DataCollector.exe" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\Tendency.SocketLib.dll" />
+    <Content Include="平台部署成品——标准文件结构\采集器\11001\Tendency.Utilities.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="平台部署成品——标准文件结构\HttpAPI\1\Log\" />
+    <Folder Include="平台部署成品——标准文件结构\主调度\1\Log\" />
+    <Folder Include="平台部署成品——标准文件结构\子调度\15001\Log\" />
+    <Folder Include="平台部署成品——标准文件结构\应用调度\16001\Log\" />
+    <Folder Include="平台部署成品——标准文件结构\权限中心\13001\Log\" />
+    <Folder Include="平台部署成品——标准文件结构\监控中心\1\Log\" />
+    <Folder Include="平台部署成品——标准文件结构\采集器\11001\Logs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

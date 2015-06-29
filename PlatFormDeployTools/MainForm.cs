@@ -1,4 +1,5 @@
-﻿using PlatFormDeployUtility;
+﻿using PlatFormDeployModel;
+using PlatFormDeployUtility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,10 @@ namespace PlatFormDeployTools
         public MainForm()
         {
             InitializeComponent();
-            PromptText.Text = @"请确认所有信息已经填写完毕，确认后点击下面的 保存 按钮";
+            //PromptText.Text = @"请确认所有信息已经填写完毕，确认后点击下面的 保存 按钮";
+
+            panel2.Enabled = false;
+            jiazai_button.Enabled = false;
             #region ceshishuju
             PathText.Text = @"C:\Users\FDFF\Desktop\平台部署成品——标准文件结构";
             #endregion
@@ -32,62 +36,155 @@ namespace PlatFormDeployTools
                 if (folderBrowserDialog.SelectedPath.Trim() != "")
                 {
                     PathText.Text = folderBrowserDialog.SelectedPath.Trim();
+                    //TODO: 浏览的处理
+                    
+                    jiazai_button.Enabled = true;
                 }
             }
         }
 
         private void save_button_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < 0; i++)
+            {
 
+            }
         }
 
         private void jiazai_button_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(PathText.Text))
+            if (string.IsNullOrWhiteSpace(PathText.Text))
             {
-                FileTreat fileTreat = new FileTreat();
-                fileTreat.Get_TableContents(PathText.Text);
-                if (ProjectContainer.tableContents != null)
-                {
-                    foreach (var item in ProjectContainer.tableContents)
-                    {
-                        fileTreat.Get_SubTableContents(item.directoryPath);
-                    }
-                }
-                //TODO:加载各个配置参数
-
-                var s = ProjectContainer.tableContents;
-
+                MessageBox.Show("请选择路径");
+                return;
+            }
+            FileTreat fileTreat = new FileTreat();
+            fileTreat.Get_TableContents(PathText.Text);
+            if (ProjectContainer.tableContents != null)
+            {
                 foreach (var item in ProjectContainer.tableContents)
                 {
-                    for (int i = 0; i < item.SubFileList.Count; i++)
+                    fileTreat.Get_SubTableContents(item.directoryPath);
+                }
+            }
+
+            var s = ProjectContainer.tableContents;
+            string path = string.Empty;
+            #region ReadFile
+            foreach (var item in ProjectContainer.tableContents)
+            {
+                for (int i = 0; i < item.SubFileList.Count; i++)
+                {
+                    switch (item.FileName)
                     {
-                        switch (item.FileName)
-                        {
-                            case "主调度":
-                            case "子调度":
-                            case "设备调度":
-                            case "应用调度":
-                            case "认证中心":
-                            case "权限中心":
-                            case "前置机":
-                            case "监控中心":
-                            case "HTTPAPI":
-                                //TODO:ini文件读取
-                                var path = item.SubFileList[i].SubFilePath + "\\config.ini";
-                                msterIP= INIOperationClass.INIGetStringValue(path, "self", "serverIP", null);
-                                msterPort = INIOperationClass.INIGetStringValue(path, "self", "serverPort", null);  
-                                break;
-                            case "采集器":
-                            case "API":
-                                //TODO: .Config读取
-                                break;
-                            default:
-                                break;
-                        }
+                        case "主调度":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.masterScheduler.serverIP = INIOperationClass.INIGetStringValue(path, "self", "serverIP", null);
+                            ProjectContainer.masterScheduler.serverPort = INIOperationClass.INIGetStringValue(path, "self", "serverPort", null);
+                            ProjectContainer.masterScheduler.Prousr = INIOperationClass.INIGetStringValue(path, "db", "usr", null);
+                            ProjectContainer.masterScheduler.Propwd = INIOperationClass.INIGetStringValue(path, "db", "pwd", null);
+                            ProjectContainer.masterScheduler.telnetPort = INIOperationClass.INIGetStringValue(path, "self", "telnetPort", null);
+                            string maSID = INIOperationClass.INIGetStringValue(path, "db", "SID", null);
+                            int a = maSID.IndexOf(':');//“：”的位置
+                            int b = maSID.IndexOf('/');//"/"的位置
+                            if (a != -1)
+                            {
+                                ProjectContainer.masterScheduler.ProIP = maSID.Substring(0, a);
+                                ProjectContainer.masterScheduler.ProPort = maSID.Substring(a + 1, b - a - 1);
+                                ProjectContainer.masterScheduler.ProSID = maSID.Substring(b + 1);
+                            }
+                            else
+                            {
+                                ProjectContainer.masterScheduler.ProIP = maSID.Substring(0, b);
+                                ProjectContainer.masterScheduler.ProSID = maSID.Substring(b + 1);
+                            }
+                            break;
+                        case "子调度":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.childSchedule.NODEIDList.Add(INIOperationClass.INIGetStringValue(path, "Sub Dispatch", "NODEID", null));
+                            break;
+                        case "设备调度":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.equipmentScheduling.nodeIdList.Add(INIOperationClass.INIGetStringValue(path, "self", "nodeId", null));
+                            break;
+                        case "应用调度":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.dispatch.nodeIdList.Add(INIOperationClass.INIGetStringValue(path, "self", "nodeId", null));
+                            break;
+                        case "认证中心":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.certificationCenter.NodeIDList.Add(INIOperationClass.INIGetStringValue(path, "Node", "ID", null));
+                            ProjectContainer.certificationCenter.DcIP = INIOperationClass.INIGetStringValue(path, "DB", "Address", null);
+                            ProjectContainer.certificationCenter.DcPort = INIOperationClass.INIGetStringValue(path, "DB", "Port", null);
+                            ProjectContainer.certificationCenter.DcSID = INIOperationClass.INIGetStringValue(path, "DB", "Table", null);
+                            ProjectContainer.certificationCenter.DcUsr = INIOperationClass.INIGetStringValue(path, "DB", "User", null);
+                            ProjectContainer.certificationCenter.DcPwd = INIOperationClass.INIGetStringValue(path, "DB", "Password", null);
+                            break;
+                        case "权限中心":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.competenceCenter.nodeidList.Add(INIOperationClass.INIGetStringValue(path, "db", "nodeId", null));
+                            break;
+                        case "前置机":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            FEPNode fepNode = new FEPNode();
+                            fepNode.managerip = INIOperationClass.INIGetStringValue(path, "front server", "managerip", null);
+                            fepNode.managerport = INIOperationClass.INIGetStringValue(path, "front server", "managerport", null);
+                            fepNode.nodeid = INIOperationClass.INIGetStringValue(path, "front server", "nodeid", null);
+                            ProjectContainer.FEP.NodeList.Add(fepNode);
+                            break;
+                        case "监控中心":
+                            break;
+                        case "HttpAPI":
+                            path = item.SubFileList[i].SubFilePath + "\\config.ini";
+                            ProjectContainer.httpAPI.PortList.Add(INIOperationClass.INIGetStringValue(path, "Setting", "Port", null));
+                            break;
+                        case "采集器":
+                            path = item.SubFileList[i].SubFilePath + "\\Tendency.DataCollector.exe";
+                            ProjectContainer.collector.NodeIdList.Add(CfgOperationClass.GetAppSettings(path, "NodeId"));
+                            break;
+                        case "API":
+                            path = item.SubFileList[i].SubFilePath + "\\Tendency.ApiDataCenter.exe";
+                            ProjectContainer.api.NodeIdList.Add(CfgOperationClass.GetAppSettings(path, "NodeId"));
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
+            #endregion
+            #region 界面数据显示
+            masterIPText.Text = ProjectContainer.masterScheduler.serverIP;
+            masterPortText.Text = ProjectContainer.masterScheduler.serverPort;
+            ProIPText.Text = ProjectContainer.masterScheduler.ProIP;
+            ProPortText.Text = ProjectContainer.masterScheduler.ProPort;
+            ProSIDText.Text = ProjectContainer.masterScheduler.ProSID;
+            ProUsrText.Text = ProjectContainer.masterScheduler.Prousr;
+            ProPwdText.Text = ProjectContainer.masterScheduler.Propwd;
+            DCIPText.Text = ProjectContainer.certificationCenter.DcIP;
+            DCPortText.Text = ProjectContainer.certificationCenter.DcPort;
+            DCSIDText.Text = ProjectContainer.certificationCenter.DcSID;
+            DcUsrText.Text = ProjectContainer.certificationCenter.DcUsr;
+            DcPwdText.Text = ProjectContainer.certificationCenter.DcPwd;
+            TelNetPortText.Text = ProjectContainer.masterScheduler.telnetPort;
+
+            ChildNodeIDComboBox.Items.AddRange(ProjectContainer.childSchedule.NODEIDList.ToArray());
+            CertificationNodeComboBox.Items.AddRange(ProjectContainer.certificationCenter.NodeIDList.ToArray());
+            HttpAPIPortComboBox.Items.AddRange(ProjectContainer.httpAPI.PortList.ToArray());
+            CollectorNodeComboBox.Items.AddRange(ProjectContainer.collector.NodeIdList.ToArray());
+            CompetenceNodeComboBox.Items.AddRange(ProjectContainer.competenceCenter.nodeidList.ToArray());
+            DispatchNodeComboBox.Items.AddRange(ProjectContainer.dispatch.nodeIdList.ToArray());
+            APINodeComboBox.Items.AddRange(ProjectContainer.api.NodeIdList.ToArray());
+            EquipmentNodeComboBox.Items.AddRange(ProjectContainer.equipmentScheduling.nodeIdList.ToArray());
+            //FEPNodeComboBox.Items.AddRange(ProjectContainer.FEP.NodeList .ToArray());
+
+            for (int i = 0; i < ProjectContainer.FEP.NodeList.Count; i++)
+            {
+                FEPNodeComboBox.Items.Add(ProjectContainer.FEP.NodeList[i].nodeid);
+            }
+
+            panel2.Enabled = true;
+            jiazai_button.Enabled = true;
+            #endregion
         }
 
         private void AddChildNodebutton_Click(object sender, EventArgs e)
@@ -96,6 +193,7 @@ namespace PlatFormDeployTools
             {
                 this.ChildNodeIDComboBox.Items.Add(this.ChildNodeIDText.Text);
                 this.ChildNodeIDComboBox.SelectedItem = this.ChildNodeIDText.Text;
+                ProjectContainer.childSchedule.NODEIDList.Add(this.ChildNodeIDText.Text);
             }
         }
 
@@ -103,8 +201,12 @@ namespace PlatFormDeployTools
         {
             if (!string.IsNullOrWhiteSpace(this.ChildNodeIDText.Text) && !string.IsNullOrWhiteSpace(this.ChildNodeIDComboBox.Text))
             {
-                this.ChildNodeIDComboBox.Items.Remove(this.ChildNodeIDComboBox.Text);
-                this.ChildNodeIDComboBox.Items.Add(this.ChildNodeIDText.Text);
+                //this.ChildNodeIDComboBox.Items.Remove(this.ChildNodeIDComboBox.Text);
+                //this.ChildNodeIDComboBox.Items.Add(this.ChildNodeIDText.Text);
+                ProjectContainer.childSchedule.NODEIDList.Remove(this.ChildNodeIDComboBox.Text);
+                ProjectContainer.childSchedule.NODEIDList.Add(this.ChildNodeIDText.Text);
+                this.ChildNodeIDComboBox.Items.Clear();
+                this.ChildNodeIDComboBox.Items.AddRange(ProjectContainer.childSchedule.NODEIDList.ToArray());
             }
         }
 
@@ -113,6 +215,7 @@ namespace PlatFormDeployTools
             if (!string.IsNullOrWhiteSpace(this.ChildNodeIDComboBox.Text))
             {
                 this.ChildNodeIDComboBox.Items.Remove(this.ChildNodeIDComboBox.Text);
+                ProjectContainer.childSchedule.NODEIDList.Remove(this.ChildNodeIDComboBox.Text);
             }
         }
 
@@ -363,5 +466,11 @@ namespace PlatFormDeployTools
         string proSid;
         string proUsr;
         string proPwd;
+
+        private void BtnNewBuild_Click(object sender, EventArgs e)
+        {
+            //TODO：解压包并复制到目录
+        }
+               
     }
 }

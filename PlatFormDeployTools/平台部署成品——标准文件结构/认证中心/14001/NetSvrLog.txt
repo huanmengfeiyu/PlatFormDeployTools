@@ -1,0 +1,26 @@
+2015年4月3日16时21分48秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日11时6分36秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日11时27分7秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日11时57分37秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日12时28分8秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日12时58分39秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日13时29分10秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日13时59分41秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日14时30分12秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日15时0分43秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日15时31分14秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日16时1分44秒:    GetQueuedCompletionStatus failed: 64
+
+2015年4月15日16时32分15秒:    GetQueuedCompletionStatus failed: 64
+

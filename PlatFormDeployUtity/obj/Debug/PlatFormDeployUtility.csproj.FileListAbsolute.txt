@@ -1,0 +1,7 @@
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\PlatFormDeployUtility.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\PlatFormDeployUtility.pdb
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\log4net.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\log4net.xml
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\obj\Debug\PlatFormDeployUtility.csprojResolveAssemblyReference.cache
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\obj\Debug\PlatFormDeployUtility.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\obj\Debug\PlatFormDeployUtility.pdb

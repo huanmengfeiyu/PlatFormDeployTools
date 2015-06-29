@@ -1,0 +1,4 @@
+2015年4月16日16时40分50秒:    bind Socket faild with Error: 10048
+
+2015年4月16日17时17分2秒:    GetQueuedCompletionStatus failed: 64
+

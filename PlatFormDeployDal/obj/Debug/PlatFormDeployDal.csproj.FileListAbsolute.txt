@@ -1,0 +1,5 @@
+D:\GitHub\PlatFormDeployTools\PlatFormDeployDal\bin\Debug\PlatFormDeployDal.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployDal\bin\Debug\PlatFormDeployDal.pdb
+D:\GitHub\PlatFormDeployTools\PlatFormDeployDal\obj\Debug\PlatFormDeployDal.csprojResolveAssemblyReference.cache
+D:\GitHub\PlatFormDeployTools\PlatFormDeployDal\obj\Debug\PlatFormDeployDal.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployDal\obj\Debug\PlatFormDeployDal.pdb
