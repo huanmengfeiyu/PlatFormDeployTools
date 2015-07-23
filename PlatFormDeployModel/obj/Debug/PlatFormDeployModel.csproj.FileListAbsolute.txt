@@ -3,3 +3,6 @@ D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\bin\Debug\PlatFormDeployModel.
 D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\obj\Debug\PlatFormDeployModel.dll
 D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\obj\Debug\PlatFormDeployModel.pdb
 D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\obj\Debug\PlatFormDeployModel.csprojResolveAssemblyReference.cache
+D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\bin\Debug\System.Net.Http.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\bin\Debug\System.Net.Http.xml
+D:\GitHub\PlatFormDeployTools\PlatFormDeployModel\bin\Debug\zh-Hans\System.Net.Http.resources.dll

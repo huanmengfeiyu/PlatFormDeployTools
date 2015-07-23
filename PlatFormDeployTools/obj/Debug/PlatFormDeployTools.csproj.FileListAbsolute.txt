@@ -14,3 +14,6 @@ D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\log4net.xml
 D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.exe
 D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.pdb
 D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\System.Net.Http.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\System.Net.Http.xml
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\zh-Hans\System.Net.Http.resources.dll
