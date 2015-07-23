@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlatFormDeployModel
 {
-    public class ChildSchedule
+    public class ChildSchedule : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP
@@ -19,7 +19,7 @@ namespace PlatFormDeployModel
         /// <summary>
         /// 节点ID
         /// </summary>
-        public List<string> NODEIDList = new List<string>();
+        public List<string> NODEIDList { get; set; }
         /// <summary>
         /// Pro数据库链接
         /// </summary>
@@ -32,5 +32,9 @@ namespace PlatFormDeployModel
         /// Pro数据库密码
         /// </summary>
         public string PWD { get; set; }
+        public ChildSchedule()
+        {
+            NODEIDList = new List<string>();
+        }
     }
 }

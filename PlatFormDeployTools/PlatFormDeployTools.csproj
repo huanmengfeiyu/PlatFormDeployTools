@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelegetList.cs" />
     <Compile Include="ProjectContainer.cs" />
     <Compile Include="FileTreat.cs" />
     <Compile Include="MainForm.cs">

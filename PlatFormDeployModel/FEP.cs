@@ -9,7 +9,7 @@ namespace PlatFormDeployModel
     /// <summary>
     /// 前置机
     /// </summary>
-    public class FEP
+    public class FEP : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP
@@ -19,7 +19,11 @@ namespace PlatFormDeployModel
         /// 主调度端口
         /// </summary>
         public string mport { get; set; }
-        public List<FEPNode> NodeList = new List<FEPNode>();
+        public List<FEPNode> NodeList { get; set; }
+        public FEP()
+        {
+            NodeList = new List<FEPNode>();
+        }
     }
     public class FEPNode
     {

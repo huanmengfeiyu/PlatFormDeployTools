@@ -9,7 +9,7 @@ namespace PlatFormDeployModel
     /// <summary>
     /// 监控中心
     /// </summary>
-    public class MonitoringCenter
+    public class MonitoringCenter : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP

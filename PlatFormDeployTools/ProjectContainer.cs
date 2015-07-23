@@ -9,12 +9,14 @@ namespace PlatFormDeployTools
 {
     public class ProjectContainer
     {
-        public static List<TableContents> tableContents = new List<TableContents>();
         /// <summary>
-        /// 朱调度
+        /// 文件目录
+        /// </summary>
+        public static List<TableContent> tableContents = new List<TableContent>();
+        /// <summary>
+        /// 主调度
         /// </summary>
         public static MasterScheduler masterScheduler = new MasterScheduler();
-        public static API api = new API();
         /// <summary>
         /// 认证中心
         /// </summary>
@@ -43,10 +45,16 @@ namespace PlatFormDeployTools
         /// 前置机
         /// </summary>
         public static FEP FEP = new FEP();
+        public static API api = new API();
         public static HTTPAPI httpAPI = new HTTPAPI();
         /// <summary>
         /// 监控中心
         /// </summary>
         public static MonitoringCenter monitoringCenter = new MonitoringCenter();
+        /// <summary>
+        /// 操作类别集合
+        /// </summary>
+        public static OprateAffairsList oprateAffairsList = new OprateAffairsList();
+        public static ShareDeplyInfo shareDeployInfo = new ShareDeplyInfo();
     }
 }

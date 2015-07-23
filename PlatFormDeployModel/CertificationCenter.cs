@@ -9,7 +9,7 @@ namespace PlatFormDeployModel
     /// <summary>
     /// 认证中心
     /// </summary>
-    public class CertificationCenter
+    public class CertificationCenter : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP
@@ -42,6 +42,10 @@ namespace PlatFormDeployModel
         /// <summary>
         /// 节点ID
         /// </summary>
-        public List<string> NodeIDList = new List<string>();
+        public List<string> NodeIDList { get; set; }
+        public CertificationCenter()
+        {
+            NodeIDList = new List<string>();
+        }
     }
 }

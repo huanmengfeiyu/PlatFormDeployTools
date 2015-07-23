@@ -9,7 +9,7 @@ namespace PlatFormDeployModel
     /// <summary>
     /// 设备调度
     /// </summary>
-    public class EquipmentScheduling
+    public class EquipmentScheduling : IPlatFormDeployInfo
     {
 
         /// <summary>
@@ -25,6 +25,10 @@ namespace PlatFormDeployModel
         /// <summary>
         /// 节点ID
         /// </summary>
-        public List<string> nodeIdList=new List<string> ();
+        public List<string> nodeIdList { get; set; }
+        public EquipmentScheduling()
+        {
+            nodeIdList = new List<string>();
+        }
     }
 }

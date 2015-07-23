@@ -25,7 +25,7 @@ namespace PlatFormDeployTools
                 DirectoryInfo[] directoryInfos = directoryInfo.GetDirectories();
                 foreach (DirectoryInfo item in directoryInfos)
                 {
-                    TableContents tableContent = new TableContents();
+                    TableContent tableContent = new TableContent();
                     tableContent.FileName = item.Name;
                     tableContent.directoryPath = item.FullName;
                     ProjectContainer.tableContents.Add(tableContent);
@@ -45,7 +45,11 @@ namespace PlatFormDeployTools
                 DirectoryInfo[] directoryInfos = directoryInfo.GetDirectories();
                 foreach (DirectoryInfo item in directoryInfos)
                 {
-                    ProjectContainer.tableContents.First(x => x.directoryPath == path).SubFileList.Add(new SubTableConents() { SubName = item.Name, SubFilePath = item.FullName });
+                    if (item.Name.StartsWith("D"))
+                    {
+                        return;
+                    }
+                    ProjectContainer.tableContents.First(x => x.directoryPath == path).SubFileList.Add(new SubTableConent() { SubName = item.Name, SubFilePath = item.FullName });
                 }
             }
         }
@@ -59,35 +63,51 @@ namespace PlatFormDeployTools
         /// <param name="SID"></param>
         /// <param name="usr"></param>
         /// <param name="pwd"></param>
-        public void SetMasterScheduler(string serverIP, string serverPort, string telnetPort, string SID, string usr, string pwd)
+        public static void SetMasterScheduler(OperateAffairs operateAffair)
         {
-            MasterScheduler masterScheduler = new MasterScheduler();
-            masterScheduler.serverIP = serverIP;
-            masterScheduler.serverPort = serverPort;
-            masterScheduler.telnetPort = telnetPort;
-            masterScheduler.ProSID = SID;
-            masterScheduler.Prousr = usr;
-            masterScheduler.Propwd = pwd;
-            ProjectContainer.masterScheduler = masterScheduler;
+            TableContent zhuDiaoDu = ProjectContainer.tableContents.Find(x => x.FileName.Equals("主调度"));
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "serverIP",ProjectContainer.shareDeployInfo.masterServerIP);
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "serverPort", ProjectContainer.shareDeployInfo.masterServerPort);
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "telnetPort", (operateAffair.platFormDeployInfo as MasterScheduler).telnetPort);
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath+"\\config.ini","db","SID",)
         }
         /// <summary>
         /// 设置子调度
-        /// </summary>
+        /// </summary>+
         /// <param name="IP"></param>
         /// <param name="PORT"></param>
         /// <param name="NODEID"></param>
         /// <param name="DB"></param>
         /// <param name="USER"></param>
         /// <param name="PWD"></param>
-        public void SetChildSchedule(string IP, string PORT, string NODEID, string DB, string USER, string PWD)
+        public static void SetChildSchedule(OperateAffairs operateAffair)    
         {
-            ChildSchedule childSchedule = new ChildSchedule();
-            childSchedule.IP = IP;
-            childSchedule.PORT = PORT;
-            //childSchedule.NODEID = NODEID;
-            childSchedule.DB = DB;
-            childSchedule.USER = USER;
-            childSchedule.PWD = PWD;
+            TableContent ziDiaoDu = ProjectContainer.tableContents.Find(x => x.FileName.Equals("子调度"));
+            if (operateAffair.platFormOperandType == PlatFormOperandType.添加)
+            {
+                FileOperate.CopyFolder(ziDiaoDu.SubFileList[0].SubFilePath, ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0]);
+                INIOperationClass.INIWriteValue(ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0] + "\\config.ini", "Sub Dispatch", "NODEID", (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0]);
+            }
+            else if (operateAffair.platFormOperandType == PlatFormOperandType.修改)
+            {
+                FileOperate.RenameDir(ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0], ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[1]);
+                INIOperationClass.INIWriteValue(ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[1] + "\\config.ini", "Sub Dispatch", "NODEID", (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[1]);
+            }
+            else if (operateAffair.platFormOperandType == PlatFormOperandType.删除)
+            {
+                FileOperate.RenameDir(ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0], ziDiaoDu.directoryPath + "\\" + "D" + DateTime.Now.ToString("yyyyMMddHHmm") + "_" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0]);
+            }
+            else
+            {
+
+            }
+            //ChildSchedule childSchedule = new ChildSchedule();
+            //childSchedule.IP = IP;
+            //childSchedule.PORT = PORT;
+            ////childSchedule.NODEID = NODEID;
+            //childSchedule.DB = DB;
+            //childSchedule.USER = USER;
+            //childSchedule.PWD = PWD;
         }
         /// <summary>
         /// 设置设备调度
@@ -112,6 +132,45 @@ namespace PlatFormDeployTools
         public void SetDispatch(string IP, string PORT, string nodeId)
         {
 
+        }
+
+        public static void Execute()
+        {
+            if (0 < ProjectContainer.oprateAffairsList.Count)
+            {
+                for (int i = 0; i < ProjectContainer.oprateAffairsList.Count; i++)
+                {
+                    switch (ProjectContainer.oprateAffairsList[i].platFormOperand)
+                    {
+                        case PlatFormOperand.主调度:
+                            SetMasterScheduler(ProjectContainer.oprateAffairsList[i]);
+                            break;
+                        case PlatFormOperand.子调度:
+                            SetChildSchedule(ProjectContainer.oprateAffairsList[i]);
+                            break;
+                        case PlatFormOperand.设备调度:
+                            break;
+                        case PlatFormOperand.应用调度:
+                            break;
+                        case PlatFormOperand.认证中心:
+                            break;
+                        case PlatFormOperand.权限中心:
+                            break;
+                        case PlatFormOperand.采集器:
+                            break;
+                        case PlatFormOperand.前置机:
+                            break;
+                        case PlatFormOperand.API:
+                            break;
+                        case PlatFormOperand.监控中心:
+                            break;
+                        case PlatFormOperand.HTTPAPI:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

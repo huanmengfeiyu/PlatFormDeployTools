@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlatFormDeployModel
 {
-    public class API
+    public class API : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP
@@ -19,7 +19,10 @@ namespace PlatFormDeployModel
         /// <summary>
         /// 节点ID  
         /// </summary>
-        public List<string> NodeIdList = new List<string>();
+        public List<string> NodeIdList { get; set; }
+        public API()
+        {
+            NodeIdList = new List<string>();
+        }
     }
 }
- 

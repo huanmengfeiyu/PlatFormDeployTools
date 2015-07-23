@@ -9,7 +9,7 @@ namespace PlatFormDeployModel
     /// <summary>
     /// 权限中心
     /// </summary>
-    public class CompetenceCenter
+    public class CompetenceCenter : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP
@@ -34,6 +34,10 @@ namespace PlatFormDeployModel
         /// <summary>
         /// 节点ID
         /// </summary>
-        public List<string> nodeidList = new List<string>();
+        public List<string> nodeidList { get; set; }
+        public CompetenceCenter()
+        {
+            nodeidList = new List<string>();
+        }
     }
 }

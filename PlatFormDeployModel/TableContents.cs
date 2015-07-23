@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace PlatFormDeployModel
 {
-    public class TableContents
+    public class TableContent
     {
         public string FileName { get; set; }
         public string directoryPath { get; set; }
-        public List<SubTableConents> SubFileList { get; set; }
-        public TableContents()
+        public List<SubTableConent> SubFileList { get; set; }
+        public TableContent()
         {
-            SubFileList = new List<SubTableConents>();
+            SubFileList = new List<SubTableConent>();
         }
     }
-    public class SubTableConents
+    public class SubTableConent
     {
         public string SubName { get; set; }
         public string SubFilePath { get; set; }

@@ -13,3 +13,4 @@ D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\PlatFormDeployUtilit
 D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\log4net.xml
 D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.exe
 D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\obj\Debug\PlatFormDeployTools.pdb
+D:\GitHub\PlatFormDeployTools\PlatFormDeployTools\bin\Debug\ICSharpCode.SharpZipLib.dll

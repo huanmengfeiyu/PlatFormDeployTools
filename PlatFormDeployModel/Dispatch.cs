@@ -9,7 +9,7 @@ namespace PlatFormDeployModel
     /// <summary>
     /// 应用调度
     /// </summary>
-    public class Dispatch
+    public class Dispatch : IPlatFormDeployInfo
     {
         /// <summary>
         /// 主调度IP
@@ -24,6 +24,10 @@ namespace PlatFormDeployModel
         /// <summary>
         /// 节点ID
         /// </summary>
-        public List<string> nodeIdList=new List<string> ();
+        public List<string> nodeIdList { get; set; }
+        public Dispatch()
+        {
+            nodeIdList = new List<string>();
+        }
     }
 }

@@ -2,43 +2,68 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PlatFormDeployModel
 {
-    public class MasterScheduler : IPlatFormDeployInfo
+    public class ShareDeplyInfo
     {
         /// <summary>
         /// 主调度IP
         /// </summary>
-        public string serverIP { get; set; }
+        public string masterServerIP { get; set; }
+
         /// <summary>
         /// 主调度端口
         /// </summary>
-        public string serverPort { get; set; }
+        public string masterServerPort { get; set; }
+
         /// <summary>
-        /// Telnet端口
+        /// dc数据库IP
         /// </summary>
-        public string telnetPort { get; set; }
+        public string DcIP { get; set; }
+
+        /// <summary>
+        /// dc 数据库端口
+        /// </summary>
+        public string DcPort { get; set; }
+
+        /// <summary>
+        /// dc 数据库SID
+        /// </summary>
+        public string DcSID { get; set; }
+
+        /// <summary>
+        /// dc 数据库用户名
+        /// </summary>
+        public string DcUsr { get; set; }
+
+        /// <summary>
+        /// dc数据库密码
+        /// </summary>
+        public string DcPwd { get; set; }
+
         /// <summary>
         /// Pro数据库ip
         /// </summary>
         public string ProIP { get; set; }
+
         /// <summary>
         /// Pro数据库端口
         /// </summary>
         public string ProPort { get; set; }
+
         /// <summary>
-        /// Pro数据库链接
+        /// Pro数据库SID
         /// </summary>
         public string ProSID { get; set; }
+
         /// <summary>
         /// Pro数据库用户名
         /// </summary>
-        public string Prousr { get; set; }
+        public string ProUSER { get; set; }
         /// <summary>
         /// Pro数据库密码
         /// </summary>
-        public string Propwd { get; set; }
+        public string ProPWD { get; set; }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace PlatFormDeployModel
 {
-    public class HTTPAPI
+    public class HTTPAPI : IPlatFormDeployInfo
     {
         /// <summary>
         /// 服务端口
         /// </summary>
-        public List<string> PortList=new List<string> ();
+        public List<string> PortList { get; set; }
         /// <summary>
         /// Dc数据库
         /// </summary>
@@ -36,5 +36,9 @@ namespace PlatFormDeployModel
         /// DC数据库密码2
         /// </summary>
         public string Pwd2 { get; set; }
+        public HTTPAPI()
+        {
+            PortList = new List<string>();
+        }
     }
 }

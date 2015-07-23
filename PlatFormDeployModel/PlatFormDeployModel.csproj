@@ -46,12 +46,16 @@
     <Compile Include="ChildSchedule.cs" />
     <Compile Include="Collector.cs" />
     <Compile Include="CompetenceCenter.cs" />
+    <Compile Include="DataDict.cs" />
     <Compile Include="Dispatch.cs" />
     <Compile Include="EquipmentScheduling.cs" />
     <Compile Include="FEP.cs" />
     <Compile Include="HTTPAPI.cs" />
+    <Compile Include="IPlatFormDeployInfo.cs" />
     <Compile Include="MasterScheduler.cs" />
     <Compile Include="MonitoringCenter.cs" />
+    <Compile Include="OperateAffairs.cs" />
+    <Compile Include="ShareDeplyInfo.cs" />
     <Compile Include="TableContents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

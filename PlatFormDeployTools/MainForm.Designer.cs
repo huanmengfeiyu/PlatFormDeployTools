@@ -141,6 +141,7 @@
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnTreat = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1050,7 +1051,7 @@
             // 
             // DeleteAPINodeButton
             // 
-            this.DeleteAPINodeButton.Location = new System.Drawing.Point(160, 82);
+            this.DeleteAPINodeButton.Location = new System.Drawing.Point(161, 84);
             this.DeleteAPINodeButton.Name = "DeleteAPINodeButton";
             this.DeleteAPINodeButton.Size = new System.Drawing.Size(51, 23);
             this.DeleteAPINodeButton.TabIndex = 37;
@@ -1060,7 +1061,7 @@
             // 
             // SaveAPINodeButton
             // 
-            this.SaveAPINodeButton.Location = new System.Drawing.Point(84, 82);
+            this.SaveAPINodeButton.Location = new System.Drawing.Point(84, 84);
             this.SaveAPINodeButton.Name = "SaveAPINodeButton";
             this.SaveAPINodeButton.Size = new System.Drawing.Size(51, 23);
             this.SaveAPINodeButton.TabIndex = 36;
@@ -1234,6 +1235,7 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.ProUsrText);
             this.groupBox10.Controls.Add(this.label10);
             this.groupBox10.Controls.Add(this.ProIPText);
             this.groupBox10.Controls.Add(this.label12);
@@ -1241,7 +1243,6 @@
             this.groupBox10.Controls.Add(this.label13);
             this.groupBox10.Controls.Add(this.ProSIDText);
             this.groupBox10.Controls.Add(this.label6);
-            this.groupBox10.Controls.Add(this.ProUsrText);
             this.groupBox10.Controls.Add(this.label7);
             this.groupBox10.Controls.Add(this.ProPwdText);
             this.groupBox10.Location = new System.Drawing.Point(246, 12);
@@ -1255,6 +1256,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnTreat);
             this.panel3.Controls.Add(this.listView1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(726, 35);
@@ -1263,15 +1265,27 @@
             this.panel3.Size = new System.Drawing.Size(550, 705);
             this.panel3.TabIndex = 42;
             // 
+            // btnTreat
+            // 
+            this.btnTreat.Location = new System.Drawing.Point(463, 670);
+            this.btnTreat.Name = "btnTreat";
+            this.btnTreat.Size = new System.Drawing.Size(75, 23);
+            this.btnTreat.TabIndex = 1;
+            this.btnTreat.Text = "执行";
+            this.btnTreat.UseVisualStyleBackColor = true;
+            this.btnTreat.Click += new System.EventHandler(this.btnTreat_Click);
+            // 
             // listView1
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(550, 705);
+            this.listView1.Size = new System.Drawing.Size(550, 612);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // MainForm
             // 
@@ -1433,6 +1447,7 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button btnTreat;
     }
 }
 
