@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PlatFormDeployTools
 {
-     public partial class MainForm : Form
+    public partial class MainForm : Form
     {
         public MainForm()
         {
@@ -38,7 +38,6 @@ namespace PlatFormDeployTools
                     PathText.Text = folderBrowserDialog.SelectedPath.Trim();
 
                     GlobleConfig.LastDirectory = PathText.Text;
-
                     BtnNewBuild.Enabled = true;
                     jiazai_button.Enabled = true;
                 }
@@ -465,7 +464,7 @@ namespace PlatFormDeployTools
         private void FEPNodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-        }        
+        }
 
         private void BtnNewBuild_Click(object sender, EventArgs e)
         {
@@ -561,7 +560,7 @@ namespace PlatFormDeployTools
 
             MasterScheduler master = new MasterScheduler();
             master.telnetPort = TelNetPortText.Text;
-            ProjectContainer.oprateAffairsList.Add(new OperateAffairs() { platFormDeployInfo = master, platFormOperand = PlatFormOperand.主调度, platFormOperandType = PlatFormOperandType.修改 });       
+            ProjectContainer.oprateAffairsList.Add(new OperateAffairs() { platFormDeployInfo = master, platFormOperand = PlatFormOperand.主调度, platFormOperandType = PlatFormOperandType.修改 });
 
             FileTreat.Execute();
         }

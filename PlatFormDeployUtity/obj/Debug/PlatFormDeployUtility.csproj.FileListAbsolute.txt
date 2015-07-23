@@ -6,3 +6,6 @@ D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\obj\Debug\PlatFormDeployUtilit
 D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\obj\Debug\PlatFormDeployUtility.dll
 D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\obj\Debug\PlatFormDeployUtility.pdb
 D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\System.Net.Http.dll
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\System.Net.Http.xml
+D:\GitHub\PlatFormDeployTools\PlatFormDeployUtity\bin\Debug\zh-Hans\System.Net.Http.resources.dll

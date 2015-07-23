@@ -66,10 +66,22 @@ namespace PlatFormDeployTools
         public static void SetMasterScheduler(OperateAffairs operateAffair)
         {
             TableContent zhuDiaoDu = ProjectContainer.tableContents.Find(x => x.FileName.Equals("主调度"));
-            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "serverIP",ProjectContainer.shareDeployInfo.masterServerIP);
+            #region 更新主调度
+            //主调度
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "serverIP", ProjectContainer.shareDeployInfo.masterServerIP);
             INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "serverPort", ProjectContainer.shareDeployInfo.masterServerPort);
+            //子调度
+            var ziDiaodu = ProjectContainer.tableContents.Find(x => x.FileName.Equals("子调度"));
+            for (int i = 0; i <zhuDiaoDu.SubFileList.Count; i++)
+            {
+                //INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[i].SubFilePath)
+            }
+            #endregion
             INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "self", "telnetPort", (operateAffair.platFormDeployInfo as MasterScheduler).telnetPort);
-            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath+"\\config.ini","db","SID",)
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "db", "SID", $"{ProjectContainer.shareDeployInfo.ProIP}:{ProjectContainer.shareDeployInfo.ProPort}/{ProjectContainer.shareDeployInfo.ProSID}");
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "db", "usr", ProjectContainer.shareDeployInfo.ProUSER);
+            INIOperationClass.INIWriteValue(zhuDiaoDu.SubFileList[0].SubFilePath + "\\config.ini", "db", "pwd", ProjectContainer.shareDeployInfo.ProPWD);
+
         }
         /// <summary>
         /// 设置子调度
@@ -86,6 +98,7 @@ namespace PlatFormDeployTools
             if (operateAffair.platFormOperandType == PlatFormOperandType.添加)
             {
                 FileOperate.CopyFolder(ziDiaoDu.SubFileList[0].SubFilePath, ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0]);
+                //TODO:操作文件之后更新文件夹
                 INIOperationClass.INIWriteValue(ziDiaoDu.directoryPath + "\\" + (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0] + "\\config.ini", "Sub Dispatch", "NODEID", (operateAffair.platFormDeployInfo as ChildSchedule).NODEIDList[0]);
             }
             else if (operateAffair.platFormOperandType == PlatFormOperandType.修改)
